@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vm"
+            type="pl.arsonproject.kalks.ui.simple.SimpleViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textresult"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="3dp"
+            android:layout_marginTop="16dp"
+            android:text="@{vm.resultCalc}"
+            android:textAlignment="textEnd"
+            android:textColor="#323232"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toStartOf="@+id/gridLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/input"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="3dp"
+            android:autoSizeMinTextSize="8sp"
+            android:maxLines="3"
+            android:text="@={vm.fullCalculation}"
+            android:textAlignment="textEnd"
+            android:textColor="#121212"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/gridLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:alignmentMode="alignBounds"
+            android:columnCount="3"
+            android:columnOrderPreserved="false"
+            android:orientation="vertical"
+            android:useDefaultMargins="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline5"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:onClick="@{() -> vm.button7()}"
+                android:text="7" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:onClick="@{() -> vm.button8()}"
+                android:text="8" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="1"
+                android:layout_column="2"
+                android:onClick="@{() -> vm.button9()}"
+                android:text="9" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="2"
+                android:layout_column="0"
+                android:onClick="@{() -> vm.button4()}"
+                android:text="4" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="2"
+                android:layout_column="1"
+                android:onClick="@{() -> vm.button5()}"
+                android:text="5" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="2"
+                android:layout_column="2"
+                android:onClick="@{() -> vm.button6()}"
+                android:text="6" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="3"
+                android:layout_column="0"
+                android:onClick="@{() -> vm.button1()}"
+                android:text="1" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="3"
+                android:layout_column="1"
+                android:onClick="@{() -> vm.button2()}"
+                android:text="2" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="3"
+                android:layout_column="2"
+                android:onClick="@{() -> vm.button3()}"
+                android:text="3" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="4"
+                android:layout_column="0"
+                android:onClick="@{() -> vm.button0()}"
+                android:text="0" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="4"
+                android:layout_column="1"
+                android:onClick="@{() -> vm.buttonDot()}"
+                android:text="." />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="4"
+                android:layout_column="2"
+                android:text="="
+
+                android:id="@+id/buttonEqual"/>
+
+
+        </GridLayout>
+
+        <GridLayout
+            android:id="@+id/gridLayout2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:alignmentMode="alignBounds"
+            android:columnCount="1"
+            android:columnOrderPreserved="false"
+            android:orientation="vertical"
+            android:rowCount="5"
+            android:useDefaultMargins="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/backButton"
+                style="@style/buttonStyle"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:longClickable="true"
+                android:onClick="@{() -> vm.deleteDigit()}"
+                app:icon="@drawable/backspace"
+                app:iconGravity="textStart"
+                app:iconSize="32dp"
+                app:iconTint="#222" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="1"
+                android:onClick="@{() -> vm.divisionButton()}"
+                android:text="÷" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="2"
+                android:layout_column="0"
+                android:onClick="@{() -> vm.multiplyButton()}"
+                android:text="x" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="4"
+                android:layout_column="0"
+                android:onClick="@{() -> vm.addingButton()}"
+                android:text="+" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
+                android:layout_row="3"
+                android:layout_column="0"
+                android:onClick="@{() -> vm.subtractingButton()}"
+                android:text="-" />
+        </GridLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.35" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.35" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
